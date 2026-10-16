@@ -4,7 +4,7 @@ def flatten_list(lst):
         if type(lst[i]) == list:
             flatten_list(lst[i])
             while len(lst[i]) > 0:
-                lst.insert(i + 1, lst[i].pop())   # pop() без аргумента
+                lst.insert(i + 1, lst[i].pop())  
             lst.pop(i)
         else:
             i += 1
