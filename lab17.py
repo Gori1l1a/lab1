@@ -1,7 +1,16 @@
 def merge_dcts(dict_a,dict_b):
     for key in dict_b:
-        if key in dict_a and type(dict_a[key])==type(dict_b[key])==dict:
-            merge_dcts(dict_a[key],dict_b[key])
+        if key in dict_a:
+            if type(dict_a[key])==type(dict_b[key])==dict:
+                merge_dcts(dict_a[key],dict_b[key])
+            elif type(dict_a[key]) == type(dict_b[key]) == list:
+                dict_a[key] = dict_a[key] + dict_b[key]
+            elif type(dict_a[key]) == type(dict_b[key]) == tuple:
+                dict_a[key] = dict_a[key] + dict_b[key]
+            elif type(dict_a[key]) == type(dict_b[key]) == set:
+                dict_a[key] = dict_a[key] | dict_b[key]
+            else:
+                dict_a[key]=dict_b[key]
         else:
             dict_a[key]=dict_b[key]
 
